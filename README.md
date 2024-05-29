@@ -1,69 +1,81 @@
-# Banking Wallet App
+# Turborepo starter
 
-Welcome to the Banking Wallet App! This application provides users and merchants with a secure and efficient way to manage their finances, supporting various functionalities such as user login, transfers, QR code payments, and merchant-specific features. It is built using Next.js for both the frontend and backend, with auxiliary backends using Express. The stack also includes Turborepo, Postgres, Prisma ORM, and Tailwind CSS.
+This is an official starter Turborepo.
 
-## Tech Stack
+## Using this example
 
-- **Frontend and Backend:** Next.js
-- **Auxiliary Backends:** Express
-- **Monorepo Management:** Turborepo
-- **Database:** Postgres
-- **ORM:** Prisma
-- **CSS Framework:** Tailwind CSS
+Run the following command:
 
-## Features
+```sh
+npx create-turbo@latest
+```
 
-### User
+## What's inside?
 
-- **Login:**
-  - Secure user authentication (email/phone).
+This Turborepo includes the following packages/apps:
 
-- **On Ramp/Off Ramp:**
-  - Transfer money from bank to wallet and vice versa.
+### Apps and Packages
 
-- **Transfers:**
-  - Send money via phone number or name.
-  - Scan a QR code to transfer money to merchants.
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-### Merchant
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-- **Login:**
-  - Login with Google.
+### Utilities
 
-- **QR Code Payments:**
-  - Generate QR codes for accepting payments.
-  - Receive notifications on payment.
-  - Automatic bank transfer every 2 days.
+This Turborepo has some additional tools already setup for you:
 
-## Hot Paths
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-- **Send Money:**
-  - Users can send money to others quickly and securely.
+### Build
 
-- **Withdraw Balance:**
-  - Merchants and users can withdraw their balance back to their bank accounts.
+To build all apps and packages, run the following command:
 
-- **Webhooks:**
-  - Handle bank webhooks for transferring money into the wallet.
+```
+cd my-turborepo
+pnpm build
+```
 
-## Getting Started
+### Develop
 
-### Prerequisites
+To develop all apps and packages, run the following command:
 
-- Node.js installed on your machine.
-- Postgres database setup.
-- Prisma installed globally (`npm install -g prisma`).
+```
+cd my-turborepo
+pnpm dev
+```
 
-### Installation
+### Remote Caching
 
-1. Clone the repository to your local machine.
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-2. Navigate to the project directory.
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-3. Install the required dependencies:
-   ```bash
-   npm install
-prisma migrate dev --name init
-npm run dev
+```
+cd my-turborepo
+npx turbo login
+```
 
-Feel free to customize this README based on your specific project details and requirements!
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
